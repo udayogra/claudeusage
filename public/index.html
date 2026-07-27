@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Claude Usage</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Claude&nbsp;Usage</h1>
+      <div class="controls">
+        <label>From <input type="date" id="from" /></label>
+        <label>To <input type="date" id="to" /></label>
+        <label>Bucket
+          <select id="bucket">
+            <option value="hour">Hourly</option>
+            <option value="day" selected>Daily</option>
+            <option value="week">Weekly</option>
+            <option value="month">Monthly</option>
+          </select>
+        </label>
+        <label>Group by
+          <select id="dim">
+            <option value="model">Model</option>
+            <option value="project" selected>Project</option>
+            <option value="git_branch">Git branch</option>
+            <option value="session_id">Session</option>
+          </select>
+        </label>
+        <button id="refresh">Re-ingest</button>
+      </div>
+    </header>
+
+    <section class="ask">
+      <div class="askbar">
+        <input type="text" id="askInput" placeholder="Ask about your usage — e.g. “why was last week expensive?” or “which project costs the most?”" />
+        <button id="askBtn">Ask Claude</button>
+      </div>
+      <div id="askAnswer" class="askanswer" hidden></div>
+    </section>
+
+    <section class="cards" id="cards"></section>
+
+    <section class="grid">
+      <div class="panel wide">
+        <h2>Cost over time</h2>
+        <canvas id="costChart"></canvas>
+      </div>
+      <div class="panel wide">
+        <h2>Tokens over time</h2>
+        <canvas id="tokenChart"></canvas>
+      </div>
+      <div class="panel">
+        <h2>Cost by model</h2>
+        <canvas id="modelChart"></canvas>
+      </div>
+      <div class="panel">
+        <h2 id="dimTitle">Cost by group</h2>
+        <canvas id="dimChart"></canvas>
+      </div>
+      <div class="panel">
+        <h2>Prompt &amp; response stats</h2>
+        <div id="textstats"></div>
+      </div>
+      <div class="panel">
+        <h2>Time spent by project (est. active)</h2>
+        <div id="timebreakdown"></div>
+      </div>
+      <div class="panel">
+        <h2>Bot vs human</h2>
+        <canvas id="botChart"></canvas>
+        <div id="botlegend"></div>
+      </div>
+      <div class="panel">
+        <h2>Main thread vs subagents</h2>
+        <canvas id="subagentChart"></canvas>
+        <div id="subagentlegend"></div>
+      </div>
+      <div class="panel">
+        <h2>Stop reasons</h2>
+        <canvas id="stopChart"></canvas>
+      </div>
+      <div class="panel wide">
+        <h2>Context compactions (window-full events)</h2>
+        <div id="compactions"></div>
+      </div>
+      <div class="panel">
+        <h2>Tool usage &amp; error rate</h2>
+        <div id="tools"></div>
+      </div>
+      <div class="panel">
+        <h2>Most-run commands</h2>
+        <div id="commands"></div>
+      </div>
+      <div class="panel wide">
+        <h2>Hottest files (reads &amp; edits)</h2>
+        <div id="files"></div>
+      </div>
+      <div class="panel wide">
+        <h2>Activity heatmap (cost by day &amp; hour)</h2>
+        <div id="heatmap"></div>
+      </div>
+      <div class="panel wide">
+        <h2 style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <span id="sessTitle">Top sessions by cost</span>
+          <select id="sessLimit" style="text-transform:none;letter-spacing:0;padding:4px 6px;font-size:12px">
+            <option value="20">Top 20</option>
+            <option value="50">Top 50</option>
+            <option value="100">Top 100</option>
+            <option value="0">All</option>
+          </select>
+        </h2>
+        <div id="sessions"></div>
+      </div>
+    </section>
+
+    <footer>
+      <span id="meta"></span> · Rates from <code>pricing.json</code> — edit to re-cost.
+    </footer>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

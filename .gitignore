@@ -1,0 +1,7 @@
+node_modules/
+usage.db
+usage.db-shm
+usage.db-wal
+usage.db-journal
+*.log
+.DS_Store

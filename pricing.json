@@ -1,0 +1,36 @@
+{
+  "_comment": "USD per 1,000,000 tokens. Matched to a model name by longest 'match' prefix. Costs recompute on every query (no re-ingest needed). BASIS: empirically fit to Claude Code's own /usage panel on Opus 4.x = 0.40x Anthropic public list price (verified 2026-07-24: single-turn $0.06 vs list $0.15; multi-turn session $0.17 vs /usage $0.18). This reflects effective/subscription pricing, NOT the public list rate. To see raw list-price estimates instead, multiply every number below by 2.5. Sonnet/Haiku are scaled by the same 0.40x factor off their list rates (not independently verified — adjust if you confirm their real rates).",
+  "default": {
+    "input": 2.0,
+    "output": 10.0,
+    "cache_read": 0.2,
+    "cache_write_5m": 2.5,
+    "cache_write_1h": 4.0
+  },
+  "models": [
+    {
+      "match": "claude-opus",
+      "input": 2.0,
+      "output": 10.0,
+      "cache_read": 0.2,
+      "cache_write_5m": 2.5,
+      "cache_write_1h": 4.0
+    },
+    {
+      "match": "claude-sonnet",
+      "input": 1.2,
+      "output": 6.0,
+      "cache_read": 0.12,
+      "cache_write_5m": 1.5,
+      "cache_write_1h": 2.4
+    },
+    {
+      "match": "claude-haiku",
+      "input": 0.4,
+      "output": 2.0,
+      "cache_read": 0.04,
+      "cache_write_5m": 0.5,
+      "cache_write_1h": 0.8
+    }
+  ]
+}
