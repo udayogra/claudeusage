@@ -11,6 +11,34 @@ feature is the one exception — it shells out to your locally installed `claude
 CLI to answer questions about your data, which does reach Anthropic. It uses
 your existing Claude Code login, so no API key is stored or required here.
 
+## Screenshots
+
+> The screenshots below use a **synthetic demo dataset** (invented projects,
+> files, and costs) — not real usage.
+
+**Overview** — summary cards, cost over time, and stacked token usage:
+
+![Overview: summary cards, cost-over-time and token charts](docs/overview.png)
+
+**Breakdowns** — cost by model & project, prompt/response stats, estimated time
+spent, bot-vs-human and main-vs-subagent splits:
+
+![Analytics: cost by model and project, stats, bot vs human, main vs subagent](docs/insights.png)
+
+**Context compactions** — every window-full event, what triggered it, and the
+tokens it shed:
+
+![Context compactions table with tokens reclaimed](docs/compactions.png)
+
+**Top sessions** — ranked by cost; click any row to drill in:
+
+![Top sessions by cost table](docs/sessions.png)
+
+**Per-session view** — totals, a "what drove the cost" breakdown, and an Ask
+box for a natural-language diagnosis (turn-by-turn replay below, not shown):
+
+![Per-session detail: totals and cost composition](docs/session-detail.png)
+
 ## Quick start
 
 ```bash
