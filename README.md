@@ -39,6 +39,11 @@ box for a natural-language diagnosis (turn-by-turn replay below, not shown):
 
 ![Per-session detail: totals and cost composition](docs/session-detail.png)
 
+**Ask Claude** — ask questions in plain English; the answer is grounded only in
+your dashboard's own data, via your local `claude` CLI:
+
+![Ask Claude: a natural-language cost-reduction answer grounded in the data](docs/ask.png)
+
 ## Quick start
 
 ```bash
